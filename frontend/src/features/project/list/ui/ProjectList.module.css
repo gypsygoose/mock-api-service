@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 4px;
+}
+
+.date {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.empty {
+  text-align: center;
+  padding: 48px 0;
+  color: #6b7280;
+}

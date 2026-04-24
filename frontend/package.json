@@ -1,0 +1,33 @@
+{
+  "name": "mock-api-service-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "rollup -c --watch",
+    "build": "NODE_ENV=production rollup -c",
+    "preview": "serve dist"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "postcss": "^8.4.38",
+    "rollup": "^4.13.0",
+    "rollup-plugin-css-modules": "^0.1.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-serve": "^2.0.2",
+    "serve": "^14.2.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.3"
+  }
+}

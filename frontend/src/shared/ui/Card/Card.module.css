@@ -1,0 +1,18 @@
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: box-shadow 0.2s;
+}
+
+.clickable {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.clickable:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
