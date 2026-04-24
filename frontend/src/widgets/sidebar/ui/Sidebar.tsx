@@ -35,13 +35,10 @@ export const Sidebar: React.FC<Props> = ({ activeProjectName }) => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logoSection}>
-        <div className={styles.logoRow}>
-          <svg className={styles.logoIcon} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="8" fill="#030213"/>
-            <path d="M8 11h16M8 16h11M8 21h13" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
+        <Link to="/" className={styles.logoRow}>
+          <img src="/logo.svg" width="32" height="32" alt="logo" className={styles.logoIcon} />
           <span className={styles.logoText}>API Mocker</span>
-        </div>
+        </Link>
         <p className={styles.logoSubtitle}>Mock REST APIs instantly</p>
       </div>
 

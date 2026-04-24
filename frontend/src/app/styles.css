@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-*, *::before, *::after {
+/* Element selectors are global in CSS Modules by default */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -14,7 +18,8 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-#root {
+/* #id selectors are scoped in CSS Modules — must use :global() */
+:global(#root) {
   min-height: 100vh;
 }
 

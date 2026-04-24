@@ -50,6 +50,10 @@ func (s *Service) ListByProject(ctx context.Context, projectID uuid.UUID) ([]dom
 	return s.repo.FindByProjectID(ctx, projectID)
 }
 
+func (s *Service) FilterByProject(ctx context.Context, projectID uuid.UUID, method, pathSearch string) ([]domain.MockEndpoint, error) {
+	return s.repo.FilterByProjectID(ctx, projectID, method, pathSearch)
+}
+
 func (s *Service) GetByID(ctx context.Context, id uuid.UUID) (domain.MockEndpoint, error) {
 	e, err := s.repo.FindByID(ctx, id)
 	if err != nil {

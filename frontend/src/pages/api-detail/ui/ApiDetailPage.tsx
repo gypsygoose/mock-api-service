@@ -20,7 +20,7 @@ const ApiDetailPage: React.FC = () => {
 
   if (!name || !id) return null;
 
-  const mockUrl = endpoint ? `${API_BASE_URL}/${name}${endpoint.path}` : '';
+  const mockUrl = endpoint ? `${API_BASE_URL}/mock/${name}${endpoint.path}` : '';
 
   const copyUrl = () => {
     navigator.clipboard.writeText(mockUrl).then(() => {

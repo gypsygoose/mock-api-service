@@ -28,6 +28,32 @@ func (r *MockEndpointRepo) Create(ctx context.Context, e domain.MockEndpoint) er
 	return err
 }
 
+func (r *MockEndpointRepo) FilterByProjectID(ctx context.Context, projectID uuid.UUID, method, pathSearch string) ([]domain.MockEndpoint, error) {
+	rows, err := r.pool.Query(ctx,
+		`SELECT id, project_id, path, method, status_code, response_data, created_at
+		 FROM mock_endpoints
+		 WHERE project_id = $1
+		   AND ($2 = '' OR method = $2)
+		   AND ($3 = '' OR path ILIKE '%' || $3 || '%')
+		 ORDER BY created_at DESC`,
+		projectID, method, pathSearch,
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var endpoints []domain.MockEndpoint
+	for rows.Next() {
+		var e domain.MockEndpoint
+		if err := rows.Scan(&e.ID, &e.ProjectID, &e.Path, &e.Method, &e.StatusCode, &e.ResponseData, &e.CreatedAt); err != nil {
+			return nil, err
+		}
+		endpoints = append(endpoints, e)
+	}
+	return endpoints, rows.Err()
+}
+
 func (r *MockEndpointRepo) FindByProjectID(ctx context.Context, projectID uuid.UUID) ([]domain.MockEndpoint, error) {
 	rows, err := r.pool.Query(ctx,
 		`SELECT id, project_id, path, method, status_code, response_data, created_at

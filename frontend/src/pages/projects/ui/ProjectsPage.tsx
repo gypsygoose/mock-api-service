@@ -2,15 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { AppLayout } from '../../../app/layouts/AppLayout';
 import { ProjectList } from '../../../features/project/list/ui/ProjectList';
 import { projectApi } from '../../../entities/project/api/projectApi';
+import { mockApiApi } from '../../../entities/mock-api/api/mockApiApi';
 import { Project } from '../../../entities/project/model/types';
 import styles from './ProjectsPage.module.css';
 
 const ProjectsPage: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [counts, setCounts] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    projectApi.list().then(({ data }) => setProjects(data ?? [])).finally(() => setLoading(false));
+    projectApi.list().then(({ data }) => {
+      const ps = data ?? [];
+      setProjects(ps);
+      Promise.all(
+        ps.map(p =>
+          mockApiApi.list(p.name)
+            .then(r => [p.name, (r.data ?? []).length] as [string, number])
+            .catch(() => [p.name, 0] as [string, number])
+        )
+      ).then(entries => setCounts(Object.fromEntries(entries)));
+    }).finally(() => setLoading(false));
   }, []);
 
   return (
@@ -26,7 +38,7 @@ const ProjectsPage: React.FC = () => {
             <p>No projects yet. Use the + button in the sidebar to create one.</p>
           </div>
         ) : (
-          <ProjectList projects={projects} />
+          <ProjectList projects={projects} counts={counts} />
         )}
       </main>
     </AppLayout>

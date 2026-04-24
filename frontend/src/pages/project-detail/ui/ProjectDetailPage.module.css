@@ -50,6 +50,82 @@
   opacity: 0.85;
 }
 
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+}
+
+.methodSelect {
+  padding: 6px 32px 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  background: #F3F3F5;
+  font-size: 14px;
+  font-family: inherit;
+  color: #0A0A0A;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23717182' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.12s, background-color 0.12s;
+  line-height: 20px;
+}
+
+.methodSelect:focus {
+  border-color: #030213;
+  background-color: #FFFFFF;
+}
+
+.pathInput {
+  flex: 1;
+  min-width: 160px;
+  max-width: 320px;
+  padding: 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  background: #F3F3F5;
+  font-size: 14px;
+  font-family: inherit;
+  color: #0A0A0A;
+  outline: none;
+  transition: border-color 0.12s;
+  line-height: 20px;
+}
+
+.pathInput:focus {
+  border-color: #030213;
+  background: #FFFFFF;
+}
+
+.pathInput::placeholder {
+  color: #A0A0B0;
+}
+
+.clearBtn {
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 14px;
+  font-family: inherit;
+  color: #717182;
+  cursor: pointer;
+  line-height: 20px;
+  transition: border-color 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+.clearBtn:hover {
+  border-color: #030213;
+  color: #0A0A0A;
+}
+
 .content {
   padding: 32px;
 }

@@ -18,7 +18,7 @@ const EndpointCard: React.FC<{
 }> = ({ endpoint, projectName, onDelete }) => {
   const [copied, setCopied] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const mockUrl = `${API_BASE_URL}/${projectName}${endpoint.path}`;
+  const mockUrl = `${API_BASE_URL}/mock/${projectName}${endpoint.path}`;
 
   const copyUrl = () => {
     navigator.clipboard.writeText(mockUrl).then(() => {

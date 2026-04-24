@@ -7,18 +7,34 @@ import { mockApiApi } from '../../../entities/mock-api/api/mockApiApi';
 import { MockEndpoint } from '../../../entities/mock-api/model/types';
 import styles from './ProjectDetailPage.module.css';
 
+const METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
+
 const ProjectDetailPage: React.FC = () => {
   const { name } = useParams<{ name: string }>();
   const [endpoints, setEndpoints] = useState<MockEndpoint[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [methodFilter, setMethodFilter] = useState('');
+  const [pathFilter, setPathFilter] = useState('');
 
   useEffect(() => {
     if (!name) return;
-    mockApiApi.list(name).then(({ data }) => setEndpoints(data ?? [])).finally(() => setLoading(false));
-  }, [name]);
+    const delay = pathFilter ? 300 : 0;
+    const timerId = setTimeout(() => {
+      setLoading(true);
+      mockApiApi
+        .list(name, { method: methodFilter || undefined, path: pathFilter || undefined })
+        .then(({ data }) => setEndpoints(data ?? []))
+        .finally(() => setLoading(false));
+    }, delay);
+    return () => clearTimeout(timerId);
+  }, [name, methodFilter, pathFilter]);
 
-  const onCreated = (endpoint: MockEndpoint) => setEndpoints((prev) => [endpoint, ...prev]);
+  const onCreated = (endpoint: MockEndpoint) => {
+    setMethodFilter('');
+    setPathFilter('');
+    setEndpoints((prev) => [endpoint, ...prev]);
+  };
   const onDeleted = (id: string) => setEndpoints((prev) => prev.filter((e) => e.id !== id));
 
   if (!name) return null;
@@ -38,6 +54,32 @@ const ProjectDetailPage: React.FC = () => {
           </svg>
           New Endpoint
         </button>
+      </div>
+
+      <div className={styles.filterBar}>
+        <select
+          className={styles.methodSelect}
+          value={methodFilter}
+          onChange={e => setMethodFilter(e.target.value)}
+        >
+          <option value="">All methods</option>
+          {METHODS.map(m => <option key={m} value={m}>{m}</option>)}
+        </select>
+        <input
+          className={styles.pathInput}
+          type="text"
+          placeholder="Filter by path…"
+          value={pathFilter}
+          onChange={e => setPathFilter(e.target.value)}
+        />
+        {(methodFilter || pathFilter) && (
+          <button
+            className={styles.clearBtn}
+            onClick={() => { setMethodFilter(''); setPathFilter(''); }}
+          >
+            Clear
+          </button>
+        )}
       </div>
 
       <main className={styles.content}>

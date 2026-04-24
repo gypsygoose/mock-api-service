@@ -80,7 +80,10 @@ func (h *MockEndpointHandler) List(c *gin.Context) {
 		return
 	}
 
-	endpoints, err := h.svc.ListByProject(c.Request.Context(), project.ID)
+	method := strings.ToUpper(c.Query("method"))
+	pathSearch := c.Query("path")
+
+	endpoints, err := h.svc.FilterByProject(c.Request.Context(), project.ID, method, pathSearch)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "internal error"})
 		return
