@@ -1,41 +1,168 @@
 .list {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 17px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.methodPath {
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-.item {
+.path {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  color: #0A0A0A;
+  line-height: 20px;
+}
+
+.deleteBtn {
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  text-decoration: none;
-  color: inherit;
-  transition: box-shadow 0.15s;
+  justify-content: center;
+  border-radius: 6px;
+  color: #717182;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
 }
 
-.item:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+.deleteBtn:hover:not(:disabled) {
+  background: #fee2e2;
+  color: #dc2626;
 }
 
-.path {
+.deleteBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.urlRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 17px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.label {
   font-size: 14px;
-  font-weight: 500;
-  color: #111827;
-  font-family: 'Courier New', monospace;
-  flex: 1;
+  color: #717182;
+  line-height: 20px;
+  letter-spacing: -0.015em;
 }
 
-.status {
+.urlBox {
+  display: flex;
+  align-items: center;
+  background: #ECECF0;
+  border-radius: 4px;
+  padding: 4px 8px 4px 12px;
+  gap: 8px;
+}
+
+.urlCode {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  color: #0A0A0A;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 20px;
+}
+
+.copyBtn {
+  width: 22px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #717182;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.copyBtn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #0A0A0A;
+}
+
+.copiedText {
+  font-size: 11px;
+  font-weight: 500;
+  color: #008236;
+  white-space: nowrap;
+}
+
+.responseSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 17px 17px;
+}
+
+.responseHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  background: #ECECF0;
+  border-radius: 4px;
   font-size: 12px;
-  color: #6b7280;
+  font-weight: 400;
+  color: #0A0A0A;
+  line-height: 16px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 12px;
+  background: #ECECF0;
+  border-radius: 4px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  color: #0A0A0A;
+  line-height: 16px;
+  overflow-x: auto;
+  white-space: pre;
 }
 
 .empty {
   text-align: center;
-  padding: 32px 0;
-  color: #6b7280;
+  padding: 48px 0;
+  color: #717182;
+  font-size: 14px;
 }

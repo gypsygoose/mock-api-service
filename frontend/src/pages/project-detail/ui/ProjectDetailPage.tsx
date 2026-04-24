@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Header } from '../../../widgets/header/ui/Header';
+import { useParams } from 'react-router-dom';
+import { AppLayout } from '../../../app/layouts/AppLayout';
 import { ApiList } from '../../../features/mock-api/list/ui/ApiList';
 import { CreateApiModal } from '../../../features/mock-api/create/ui/CreateApiModal';
-import { Button } from '../../../shared/ui/Button/Button';
 import { mockApiApi } from '../../../entities/mock-api/api/mockApiApi';
 import { MockEndpoint } from '../../../entities/mock-api/model/types';
 import styles from './ProjectDetailPage.module.css';
@@ -20,24 +19,35 @@ const ProjectDetailPage: React.FC = () => {
   }, [name]);
 
   const onCreated = (endpoint: MockEndpoint) => setEndpoints((prev) => [endpoint, ...prev]);
+  const onDeleted = (id: string) => setEndpoints((prev) => prev.filter((e) => e.id !== id));
 
   if (!name) return null;
 
   return (
-    <>
-      <Header />
-      <main className={styles.page}>
-        <Link to="/" className={styles.back}>← All Projects</Link>
-        <div className={styles.topbar}>
+    <AppLayout activeProjectName={name}>
+      <div className={styles.pageHeader}>
+        <div className={styles.headerLeft}>
           <h1 className={styles.title}>{name}</h1>
-          <Button onClick={() => setShowModal(true)}>+ New Endpoint</Button>
+          <span className={styles.subtitle}>
+            {endpoints.length} endpoint{endpoints.length !== 1 ? 's' : ''}
+          </span>
         </div>
+        <button className={styles.newBtn} onClick={() => setShowModal(true)}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.33V12.67M3.33 8h9.34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
+          New Endpoint
+        </button>
+      </div>
+
+      <main className={styles.content}>
         {loading ? (
           <p className={styles.loading}>Loading...</p>
         ) : (
-          <ApiList endpoints={endpoints} projectName={name} />
+          <ApiList endpoints={endpoints} projectName={name} onDelete={onDeleted} />
         )}
       </main>
+
       {showModal && (
         <CreateApiModal
           projectName={name}
@@ -45,7 +55,7 @@ const ProjectDetailPage: React.FC = () => {
           onCreated={onCreated}
         />
       )}
-    </>
+    </AppLayout>
   );
 };
 

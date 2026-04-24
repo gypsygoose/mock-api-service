@@ -1,124 +1,158 @@
-.page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 32px 24px;
+.pageHeader {
+  padding: 20px 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .back {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
-  color: #6b7280;
+  font-size: 14px;
+  color: #717182;
   text-decoration: none;
-  margin-bottom: 24px;
+  letter-spacing: -0.015em;
+  transition: color 0.15s;
 }
 
-.back:hover { color: #111827; }
+.back:hover {
+  color: #0A0A0A;
+}
 
-.header {
+.content {
+  padding: 32px;
+  max-width: 900px;
+}
+
+.loading {
+  color: #717182;
+  text-align: center;
+  padding: 48px 0;
+  font-size: 14px;
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  padding: 17px 17px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.methodPath {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
+  gap: 8px;
 }
 
 .path {
-  font-size: 22px;
-  font-weight: 700;
-  color: #111827;
-  font-family: 'Courier New', monospace;
-  margin: 0;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  color: #0A0A0A;
+  line-height: 20px;
 }
 
-.section {
-  margin-bottom: 24px;
+.urlRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 17px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.sectionTitle {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #9ca3af;
-  margin: 0 0 8px;
+.label {
+  font-size: 14px;
+  color: #717182;
+  line-height: 20px;
+  letter-spacing: -0.015em;
 }
 
 .urlBox {
   display: flex;
   align-items: center;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 12px 14px;
-  gap: 10px;
+  background: #ECECF0;
+  border-radius: 4px;
+  padding: 4px 8px 4px 12px;
+  gap: 8px;
 }
 
-.url {
-  font-family: 'Courier New', monospace;
+.urlCode {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
   font-size: 13px;
-  color: #374151;
+  color: #0A0A0A;
   flex: 1;
-  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 20px;
 }
 
 .copyBtn {
+  width: 22px;
+  height: 22px;
   background: none;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 12px;
+  border: none;
   cursor: pointer;
-  color: #374151;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #717182;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
 }
 
 .copyBtn:hover {
-  background: #e5e7eb;
+  background: rgba(0, 0, 0, 0.08);
+  color: #0A0A0A;
 }
 
-.code {
-  background: #111827;
-  color: #d1fae5;
-  border-radius: 8px;
-  padding: 16px;
-  font-family: 'Courier New', monospace;
-  font-size: 13px;
-  line-height: 1.6;
+.copiedText {
+  font-size: 11px;
+  font-weight: 500;
+  color: #008236;
+  white-space: nowrap;
+}
+
+.responseSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 17px 17px;
+}
+
+.responseHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  background: #ECECF0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #0A0A0A;
+  line-height: 16px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 12px;
+  background: #ECECF0;
+  border-radius: 4px;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  color: #0A0A0A;
+  line-height: 16px;
   overflow-x: auto;
   white-space: pre;
-}
-
-.metaGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.metaItem {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 12px 14px;
-}
-
-.metaLabel {
-  font-size: 11px;
-  color: #9ca3af;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0 0 4px;
-}
-
-.metaValue {
-  font-size: 14px;
-  font-weight: 500;
-  color: #111827;
-  margin: 0;
-}
-
-.loading {
-  color: #6b7280;
-  text-align: center;
-  padding: 48px 0;
 }

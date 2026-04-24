@@ -6,8 +6,9 @@
 
 .hint {
   font-size: 12px;
-  color: #6b7280;
-  margin-top: -8px;
+  color: #717182;
+  margin: 4px 0 0;
+  letter-spacing: -0.01em;
 }
 
 .error {
@@ -17,4 +18,54 @@
   border-radius: 8px;
   color: #991b1b;
   font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.submitBtn {
+  flex: 1;
+  padding: 8px 16px;
+  background: #030213;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+  letter-spacing: -0.02em;
+  line-height: 24px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  padding: 8px 16px;
+  background: #ECECF0;
+  color: #0A0A0A;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  letter-spacing: -0.02em;
+  line-height: 24px;
+}
+
+.cancelBtn:hover {
+  background: #E0E0E4;
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../../shared/ui/Modal/Modal';
 import { Input } from '../../../../shared/ui/Input/Input';
-import { Button } from '../../../../shared/ui/Button/Button';
 import { Project } from '../../../../entities/project/model/types';
 import { useCreateProject } from '../model/useCreateProject';
 import styles from './CreateProjectModal.module.css';
@@ -32,15 +31,20 @@ export const CreateProjectModal: React.FC<Props> = ({ onClose, onCreated }) => {
             label="Project Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="my-api"
+            placeholder="My API Project"
             required
             pattern="[a-zA-Z0-9]+"
           />
           <p className={styles.hint}>Only letters and numbers. Used in the mock URL.</p>
         </div>
-        <Button type="submit" fullWidth loading={loading}>
-          Create Project
-        </Button>
+        <div className={styles.actions}>
+          <button type="submit" className={styles.submitBtn} disabled={loading}>
+            {loading ? 'Creating...' : 'Create Project'}
+          </button>
+          <button type="button" className={styles.cancelBtn} onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </form>
     </Modal>
   );

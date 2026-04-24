@@ -27,7 +27,7 @@ export default {
     typescript({ tsconfig: './tsconfig.json', sourceMap: isDev }),
     postcss({
       modules: true,
-      extract: 'dist/bundle.css',
+      extract: true,
       minimize: !isDev,
     }),
     isDev && serve({ contentBase: ['dist', 'public'], port: 3000, open: true }),

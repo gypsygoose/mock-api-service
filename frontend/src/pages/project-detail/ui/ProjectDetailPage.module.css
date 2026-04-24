@@ -1,40 +1,62 @@
-.page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 32px 24px;
-}
-
-.back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: #6b7280;
-  text-decoration: none;
-  margin-bottom: 24px;
-}
-
-.back:hover {
-  color: #111827;
-}
-
-.topbar {
+.pageHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #111827;
+  font-size: 20px;
+  font-weight: 500;
+  color: #0A0A0A;
   margin: 0;
-  font-family: 'Courier New', monospace;
+  line-height: 30px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #717182;
+  line-height: 20px;
+  letter-spacing: -0.015em;
+}
+
+.newBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px 8px 16px;
+  background: #030213;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+  letter-spacing: -0.02em;
+  line-height: 24px;
+}
+
+.newBtn:hover {
+  opacity: 0.85;
+}
+
+.content {
+  padding: 32px;
 }
 
 .loading {
-  color: #6b7280;
+  color: #717182;
   text-align: center;
-  padding: 32px 0;
+  padding: 48px 0;
+  font-size: 14px;
 }
